@@ -21,7 +21,7 @@
 
 <body>
 
-  <section class="vh-100" style="background-color: #508bfc;">
+  <section class="vh-200" style="background-color: #508bfc;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -32,20 +32,22 @@
               <h3 class="mb-4">Inicio de sesión</h3>
   
               <div class="form-outline mb-4">
-                <label for="email">Email</label>
+                <label for="email">Email <span class="requerido">*</span></label>
                 <input type="email" id="user" class="form-control form-control-lg"  placeholder="Email" />
               </div>
   
               <div class="form-outline mb-4">
-                <label for="password">Contraseña</label>
+                <label for="password">Contraseña <span class="requerido">*</span> </label>
                 <div class="input-group">
                   <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña" />
                   <div class="input-group-append">
                         <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
                       </div>
                 </div>
+                <br>
+                <span class="requerido">* Campo requerido.</span>
               </div>
-  
+              
               <button class="btn btn-primary btn-lg btn-block" type="submit" id="boton">Login</button>
             </form>
             </div>

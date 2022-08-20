@@ -193,3 +193,7 @@ a.custom-card:hover {
   width: 350px;
   margin-bottom: 1em;
 }
+
+.requerido {
+  color: red;
+}
