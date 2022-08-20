@@ -9,3 +9,29 @@ function mostrarPassword(){
     }
 } 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('loggin');
+
+    form.addEventListener('submit', (evento) => {
+        evento.preventDefault();
+
+        const inputs = form.querySelectorAll('input');
+
+        let vacio = false;
+        inputs.forEach((input) => {
+            if(input.value == ''){
+                vacio = true;
+            }
+        });
+        if(vacio){
+            alert('¡Usuario y/o Contraseña incorrecta!');
+        } else {
+            window.location.href= "homepage.html"; 
+        } 
+        
+    })
+    
+})
+
+
+
