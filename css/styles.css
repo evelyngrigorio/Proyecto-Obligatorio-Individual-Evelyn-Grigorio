@@ -199,5 +199,9 @@ a.custom-card:hover {
 }
 
 .img-thumbnail {
-  width: 10%;
+  padding: 0.25rem;
+  border-radius: 0.50rem;
+  width: 240px;
+  float: left;
+  margin-right: 40px;
 }
