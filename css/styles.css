@@ -197,3 +197,7 @@ a.custom-card:hover {
 .requerido {
   color: red;
 }
+
+.img-thumbnail {
+  width: 10%;
+}
