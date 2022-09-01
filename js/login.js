@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(vacio){
             alert('¡Usuario y/o Contraseña incorrecta!');
         } else {
+            let usuario = document.getElementById('user');
+            localStorage.setItem('user', usuario.value);
+
             window.location.href= "homepage.html"; 
         } 
         
