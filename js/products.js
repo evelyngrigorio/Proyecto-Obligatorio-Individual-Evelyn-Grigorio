@@ -1,4 +1,11 @@
 const url = `https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem("catID")}.json`;
+const ORDER_ASC_BY_COST = "1-2";
+const ORDER_DESC_BY_COST = "2-1";
+const ORDER_BY_SOLD_COUNT = "Relevancia";
+var currentProductsArray = [];
+var currentSortCriteria = undefined;
+var minCost = undefined;
+var maxCost = undefined;
 
 function htmlContentToAppend(products) {
     //Se agregan los valores del objeto dentro de un div en HTML (imagen, descripción, etc...) 
