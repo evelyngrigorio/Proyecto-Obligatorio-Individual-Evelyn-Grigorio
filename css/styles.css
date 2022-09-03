@@ -189,16 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-#img_loggin {
-  width: 350px;
-  margin-bottom: 1em;
-}
-
-.requerido {
-  color: red;
-}
-
-.img-thumbnail {
+.img-thumbnail{
   padding: 0.25rem;
   border-radius: 0.50rem;
   width: 240px;

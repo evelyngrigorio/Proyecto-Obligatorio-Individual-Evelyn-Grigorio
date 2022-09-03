@@ -40,6 +40,8 @@ let getJSONData = function(url){
     });
 }
 
+
+/* Función para agregar la visualización del user guardado en el localStorage, en la navbar */
 document.addEventListener("DOMContentLoaded", ()=>{
   document.querySelector(".navbar-nav li:nth-child(4)").innerHTML = `<a class="nav-link active" href="my-profile.html">${localStorage.getItem("user")}</a>`
 })

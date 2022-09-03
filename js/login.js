@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(vacio){
             alert('¡Usuario y/o Contraseña incorrecta!');
         } else {
+            /* Seteo la info de usuario en el localStorage, previo a redirigir a la homepage */
             let usuario = document.getElementById('user');
             localStorage.setItem('user', usuario.value);
 
