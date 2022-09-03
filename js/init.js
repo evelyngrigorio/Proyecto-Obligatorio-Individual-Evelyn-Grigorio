@@ -43,6 +43,14 @@ let getJSONData = function(url){
 
 /* Función para agregar la visualización del user guardado en el localStorage, en la navbar */
 document.addEventListener("DOMContentLoaded", ()=>{
-  document.querySelector(".navbar-nav li:nth-child(4)").innerHTML = `<a class="nav-link active" href="my-profile.html">${localStorage.getItem("user")}</a>`
+  document.querySelector(".navbar-nav li:nth-child(4)").innerHTML = `
+  <a class="nav-link dropdown-toggle active" href="my-profile.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           ${localStorage.getItem("user")}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="my-profile.html"><i class="fa-solid fa-user"></i> Mi perfil </a></li>
+            <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Carrito </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="index.html" id="logout"><i class="fa-solid fa-right-from-bracket"> </i> Cerrar sesión</a></li>
+          </ul>`
 })
-
