@@ -54,3 +54,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
             <li><a class="dropdown-item" href="index.html" id="logout"><i class="fa-solid fa-right-from-bracket"> </i> Cerrar sesión</a></li>
           </ul>`
 })
+
