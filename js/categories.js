@@ -31,7 +31,6 @@ function sortCategories(criteria, array){
             return 0;
         });
     }
-
     return result;
 }
 
