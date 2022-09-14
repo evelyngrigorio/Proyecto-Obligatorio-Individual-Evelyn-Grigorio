@@ -38,7 +38,7 @@ function sortProducts(criteria, array){
   return result;
 }
 
-function seProdID(id, name) {
+function setProdID(id, name) {
     localStorage.setItem("prodID", id);
     localStorage.setItem("prodName", name);
     window.location = "products-info.html"
