@@ -47,7 +47,7 @@ function mostrarProductos() {
       (maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost)))
     {
       htmlContentToAppend += `<div class="list-group" id="cat-list-container">   
-                <div class="bg-dark text-white shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action">
+                <div class="shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src= "${productos.image}" alt="product image" class="img-fluid rounded"">
