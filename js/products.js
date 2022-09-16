@@ -1,9 +1,8 @@
 
-const url = PRODUCTS_URL;
-const ORDER_ASC_BY_COST = "12";
-const ORDER_DESC_BY_COST = "21";
-const ORDER_BY_PROD_SOLD = "Sold";
-let currentProductsArray =[];
+const ORDER_ASC_BY_COST = "costoAsc";
+const ORDER_DESC_BY_COST = "costoDesc";
+const ORDER_BY_REL = "Rel";
+let currentProductsArray = [];
 let currentSortCriteriaProducts = undefined;
 let minCost = undefined;
 let maxCost = undefined;
@@ -24,7 +23,7 @@ function sortProducts(criteria, array){
           if ( a.cost < b.cost ){ return 1; }
           return 0;
       });
-  }else if (criteria === ORDER_BY_PROD_SOLD){
+  }else if (criteria === ORDER_BY_REL){
       result = array.sort(function(a, b) {
           let aCount = parseInt(a.soldCount);
           let bCount = parseInt(b.soldCount);
@@ -47,7 +46,7 @@ function setProdID(id, name) {
 function mostrarProductos() {
   let htmlContentToAppend = "";
   for (let i = 0; i < product.products.length; i++) {
-    let productos = product.products[i]; 
+    let productos = product.products[i]; // products: Propiedad de la resp json 
 
     if ((minCost == undefined || (minCost != undefined && parseInt(productos.cost) >= minCost)) &&
       (maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost)))
@@ -79,17 +78,17 @@ function sortAndShowProducts(sortCriteria, productsArray) {
   currentSortCriteriaProducts = sortCriteria;
 
   if (productsArray != undefined) {
-    currentProductsArray = productsArray;
+    products = productsArray;
   }
 
-  currentProductsArray = sortProducts(currentSortCriteriaProducts, currentProductsArray);
+  sortProducts(currentSortCriteriaProducts, product.products);
 
   mostrarProductos();
 }
 
 
 document.addEventListener("DOMContentLoaded", async function() {
-    getJSONData(url).then(function (response) {
+    getJSONData(PRODUCTS_URL).then(function (response) {
         if (response.status === "ok") {
             product = response.data; 
             console.log(product)
@@ -97,18 +96,18 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     })
     
-    document.getElementById("sortAscProd").addEventListener("click", function(){
+    document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_ASC_BY_COST);
     });
 
 
-    document.getElementById("sortDescProd").addEventListener("click", function(){
+    document.getElementById("sortDesc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_COST);
     });
 
 
-    document.getElementById("sortByCountProd").addEventListener("click", function(){
-        sortAndShowProducts(ORDER_BY_PROD_SOLD);
+    document.getElementById("sortByRel").addEventListener("click", function(){
+        sortAndShowProducts(ORDER_BY_REL);
     });
 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
@@ -143,5 +142,4 @@ document.addEventListener("DOMContentLoaded", async function() {
     console.log(maxCost)
     mostrarProductos();
     });
-
 });
