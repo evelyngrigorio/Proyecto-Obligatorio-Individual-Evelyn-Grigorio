@@ -8,11 +8,16 @@ let minCost = undefined;
 let maxCost = undefined;
 const listaProductos = document.getElementById("prod-list-container");
 
+/*Ordeno los productos de 3 formas diferentes, indicadas en las const de arriba*/
 function sortProducts(criteria, array){
   let result = [];
+
+/*A sort le indico con esa función anónima la forma en la que quiero ordenar*/
   if (criteria === ORDER_ASC_BY_COST)
   {
       result = array.sort(function(a, b) {
+
+/*Si el costo de A es mayor que el costo de B, el costo de B(más barato) aparece 1ro en la lista*/
           if ( a.cost < b.cost ){ return -1; }
           if ( a.cost > b.cost ){ return 1; }
           return 0;
@@ -25,6 +30,8 @@ function sortProducts(criteria, array){
       });
   }else if (criteria === ORDER_BY_REL){
       result = array.sort(function(a, b) {
+
+/*Esto es necesario para que los valores tipo texto se transformen en números*/
           let aCount = parseInt(a.soldCount);
           let bCount = parseInt(b.soldCount);
 
@@ -45,12 +52,15 @@ function setProdID(id, name) {
 
 function mostrarProductos() {
   let htmlContentToAppend = "";
-  for (let i = 0; i < product.products.length; i++) {
-    let productos = product.products[i]; // products: Propiedad de la resp json 
+  for (let i = 0; i < product.products.length; i++) { //Se inicia un contador para recorrer cada producto dentro products.
+    let productos = product.products[i]; // utilizo products la propiedad del json. 
 
     if ((minCost == undefined || (minCost != undefined && parseInt(productos.cost) >= minCost)) &&
       (maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost)))
+      //El if indica si está entre el mínimo y el máximo.
     {
+
+      //Se agregan los valores del objeto dentro de un div en HTML (imagen, descripción, etc...) 
       htmlContentToAppend += `<div class="list-group" id="cat-list-container">   
                 <div onclick="setProdID(${productos.id}, '${productos.name}')" class="shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action">
                 <div class="row">
@@ -72,34 +82,44 @@ function mostrarProductos() {
     }
   }
   listaProductos.innerHTML = htmlContentToAppend;
+  // Se llama listaProductos (el div del html donde mostraremos los datos) y se le agregan todos los valores contenidos 
+  // en htmlContentToAppend.
 }
 
+/*Usa las 2 func anteriores: primero ordena y luego muestra*/
 function sortAndShowProducts(sortCriteria, productsArray) {
   currentSortCriteriaProducts = sortCriteria;
 
+/*Si la lista de prod no está undefined, se setea en la var currentProductsArray la lista de prod*/    
   if (productsArray != undefined) {
     products = productsArray;
   }
 
+/*Ordena la lista contenida en currentProductsArray*/  
   sortProducts(currentSortCriteriaProducts, product.products);
 
+//Muestro los productos ordenados  
   mostrarProductos();
 }
 
-
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", async function() {
     getJSONData(PRODUCTS_URL).then(function (response) {
+
+/*Si no hay error, se carga la lista ordenada (por defecto) y se muestra*/   
         if (response.status === "ok") {
             product = response.data; 
             console.log(product)
             mostrarProductos();
         }
     })
-    
+
+/*Después de hacer click en cada botón, se muestra la lista ordenada según el criterio puesto como parámetro*/   
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_ASC_BY_COST);
     });
-
 
     document.getElementById("sortDesc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_COST);
@@ -110,6 +130,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         sortAndShowProducts(ORDER_BY_REL);
     });
 
+/*Después de hacer click en el botón, se borran los rangos de precio ingresados en cada campo y se restablece la lista*/ 
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCostMin").value = "";
         document.getElementById("rangeFilterCostMax").value = "";
@@ -120,6 +141,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         mostrarProductos();
     });
 
+/*Después de hacer click, si se cumple lo del if, se transforma el valor de minCost en números usando parseInt. Sino, quedan undefined*/        
     document.getElementById("rangeFilterCost").addEventListener("click", function(){
         minCost = document.getElementById("rangeFilterCostMin").value;
         maxCost = document.getElementById("rangeFilterCostMax").value;
@@ -139,7 +161,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     else{
         maxCost = undefined;
     }
-    console.log(maxCost)
+
+/*Luego de la función anterior, los valores devueltos van a ser números o undefined. Ahora se llama a esta función para mostrar la lista*/
     mostrarProductos();
     });
 });
