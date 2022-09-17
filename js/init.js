@@ -52,7 +52,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
             <li><a class="dropdown-item" href="my-profile.html"><i class="fa-solid fa-user"></i> Mi perfil </a></li>
             <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Carrito </a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="index.html" id="logout"><i class="fa-solid fa-right-from-bracket"> </i> Cerrar sesión</a></li>
+            <li><a class="dropdown-item" href="index.html" id="logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"> </i> Cerrar sesión</a></li>
           </ul>`
 })
 
+function logout(){
+  localStorage.setItem('user','')
+};
