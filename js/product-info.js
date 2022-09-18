@@ -21,7 +21,7 @@ function showProdImages() {
 }
 
 /*Función para mostrar comentarios.*/
-function showCommentList() {
+function showCommentsList() {
     let htmlContentToAppend = "";
 
     for (let i = 0; i < commentsArray.length; i++) { /*Se inicia un contador para recorrer el arreglo de comentarios commentsArray.*/
