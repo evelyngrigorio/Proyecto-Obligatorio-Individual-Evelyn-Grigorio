@@ -13,7 +13,7 @@ function showProdImages() {
 
         /*Imágenes: se agregan los valores de las siguientes.*/
         htmlContentToAppend += `
-        <img class="d-block w-200 img-thumbnail" src="` + image + `" alt="">`;
+        <img class="d-block w-200 img-thumbnail rounded" src="` + image + `" alt="">`;
     }
 
     document.getElementById("prodImages").innerHTML = htmlContentToAppend;
