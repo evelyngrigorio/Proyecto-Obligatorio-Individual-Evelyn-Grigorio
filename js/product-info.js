@@ -1,7 +1,6 @@
 var product = [];
 var commentsArray = [];
 var productsArray = [];
-var relProductsArray = [];
 var imagesArray = [];
 
 /*Función para mostrar imágenes.*/
