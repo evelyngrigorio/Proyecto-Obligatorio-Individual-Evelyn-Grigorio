@@ -63,6 +63,59 @@ function drawStars(stars) {
     return htmlContentToAppend;
 }
 
+/*Función para agregar nuevo comentario.*/
+function addComment() {
+    let htmlContentToAppend = "";
+    let description = document.getElementById("commentDescription").value;
+    let score = document.getElementById("commentScore").value;
+    let user = localStorage.getItem("username");
+
+    let date = new Date(); /*Función preestablecida para obtener fecha y hora.*/
+    let day = date.getDate(); /*Obtenemos cada parte de la fecha y hora (día, mes, minuto...)*/
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    if (month < 10) { /*Si tienen menos de 2 cifras, agrego 0 adelante.*/
+        month = `0${month}`;
+    }
+    if (day < 10) {
+        day = `0${day}`;
+    }
+    let hour = date.getHours();
+    if (hour < 10) {
+        hour = `0${hour}`;
+    }
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    let seconds = date.getSeconds();
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+    let dateTime = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`; /*Fecha y hora ordenada.*/
+
+    /*Se agregan los valores dentro de un div en HTML.*/
+    htmlContentToAppend = `
+        <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">Puntaje: `+ drawStars(score) + `
+                          </h4>
+                            
+                            <small class="text-muted">` + dateTime + `</small>
+                        </div>
+                        <p class="mb-1">` + description + `</p>
+                        <p class="mb-1">Usuario: ` + user + `</p>
+                    </div>
+                </div>
+            </div>
+            `
+    /*Se llama al div= comments-list-container del HTML y se le agregan todos los valores del nuevo comentario.*/
+    document.getElementById("comments-list-container").innerHTML += htmlContentToAppend;
+    document.getElementById("commDescription").value = ""; /*Después de dar click, el campo "cuerpo" queda en blanco*/
+}
+
 /*Info del producto: agrego la info contenida en las var en los div correspondientes del HTML.*/
 let prodName = document.getElementById("prodName");
 let prodCategory = document.getElementById("prodCategory");
