@@ -7,7 +7,7 @@ var imagesArray = [];
 function showProdImages() {
     let htmlContentToAppend = "";
 
-    for(let i = 1; i < imagesArray.length; i++) { /*Se recorre el arreglo imagesArray a partir de la posición 1.*/
+    for(let i = 0; i < imagesArray.length; i++) { /*Se recorre el arreglo imagesArray a partir de la posición 1.*/
         let image = imagesArray[i];
         
 
