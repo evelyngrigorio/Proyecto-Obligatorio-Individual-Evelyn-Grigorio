@@ -68,7 +68,7 @@ function addComment() {
     let htmlContentToAppend = "";
     let description = document.getElementById("commentDescription").value;
     let score = document.getElementById("commentScore").value;
-    let user = localStorage.getItem("username");
+    let user = localStorage.getItem("user");
 
     let date = new Date(); /*Función preestablecida para obtener fecha y hora.*/
     let day = date.getDate(); /*Obtenemos cada parte de la fecha y hora (día, mes, minuto...)*/
@@ -113,7 +113,7 @@ function addComment() {
             `
     /*Se llama al div= comments-list-container del HTML y se le agregan todos los valores del nuevo comentario.*/
     document.getElementById("comments-list-container").innerHTML += htmlContentToAppend;
-    document.getElementById("commDescription").value = ""; /*Después de dar click, el campo "cuerpo" queda en blanco*/
+    document.getElementById("commentDescription").value = ""; /*Después de dar click, el campo "cuerpo" queda en blanco*/
 }
 
 /*Info del producto: agrego la info contenida en las var en los div correspondientes del HTML.*/
