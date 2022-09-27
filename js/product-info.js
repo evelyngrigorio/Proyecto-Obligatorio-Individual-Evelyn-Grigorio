@@ -2,6 +2,7 @@ var product = [];
 var commentsArray = [];
 var productsArray = [];
 var relProductsArray = [];
+var relProduct = {};
 var imagesArray = [];
 
 
