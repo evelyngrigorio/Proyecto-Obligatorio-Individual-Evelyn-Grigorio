@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/product-info.css">
   <!--Fontawesome para los íconos-->
   <script src="https://kit.fontawesome.com/c79dcd93cc.js" crossorigin="anonymous"></script>
 </head>
@@ -41,86 +42,85 @@
 
 
   <main role="main" class="pb-5">
-    <div class="container mt-5">
-      <h2 id="prodName"></h2>
-      <hr class="my-3">
-      <br>
-      <div class="container row-cols-lg-auto">
-        <dl>
-        <dt>Imágenes ilustrativas</dt> <br>
-          <div class="container" id="prodImages">
-            
-          </div> <br>
-        </dl>
-      </div>
-      <div class="container row">
-        <dl> <br>
-          <dt>Categoría</dt>
-          <dd>
-            <p id="prodCategory"></p>
-          </dd>
-
-          <dt>Descripción</dt>
-          <dd>
-            <p id="prodDescription"></p>
-          </dd>
-
-          <dt>Costo</dt>
-          <dd>
-            <p id="prodCurrency"></p>
-            <p id="prodCost"></p>
-          </dd>
-
-          <dt>Cantidad de vendidos</dt>
-          <dd>
-            <p id="prodSoldCount"></p>
-          </dd>
-          <br>
-        </dl>
-      </div>
-    </div>
-
-    <div class="container mt-5">
-        <dl>
-          <hr class="my-3">
-          <br>
-          <h3>Comentarios</h3> <br>
-        </dl>
-        <div class="list-group" id="comments-list-container">
-          
-        </div>
-        <br>
-    </div>
-
-    <div class="container mt-5">
-      <hr class="my-3">
-      <br>
-      <h3>Haz un comentario sobre el producto</h3>
-      <br>
-      <p>Puntaje:</p>
-      <select class="form-control" id="commentScore">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-
-      <br>
-      <p>Cuerpo:</p>
-      <textarea class="form-control me-2" id="commentDescription" cols="100" rows="6"></textarea> <br>
-      <button class="btn btn-dark" type="submit" onclick="addComment()">Enviar</button>
-
-      <div class="container-fluid">
-        <br>
+    <div class="container mt-5" id="productInfo">
+      <div class="container mt-5">
+        <h2 id="prodName"></h2>
         <hr class="my-3">
         <br>
-        <h3>Productos relacionados</h3>
-        <div class="row" id="related-prod-container">
+        <div class="container">
+          <div class="col-7">
+            <dl>
+              <dt>Imágenes ilustrativas</dt> <br>
+              <div class="container" id="prodImages">
+                
+              </div>
+            </dl>
+          </div>
+          <div class="col">
+            <dl>
+              <dt>Categoría</dt>
+              <dd>
+                <p id="prodCategory"></p>
+              </dd>
+
+              <dt>Descripción</dt>
+              <dd>
+                <p id="prodDescription"></p>
+              </dd>
+
+              <dt>Costo</dt>
+              <dd>
+                <p id="prodCurrency"></p>
+                <p id="prodCost"></p>
+              </dd>
+
+              <dt>Cantidad de vendidos</dt>
+              <dd>
+                <p id="prodSoldCount"></p>
+              </dd>
+              <br>
+            </dl>
+          </div>
         </div>
       </div>
-    </div>
-    
+
+      <div class="container mt-5 row">
+        <div class="col-5">
+            <dl>
+              <br>
+              <h6> <b> Comentarios </b></h6><br>
+            </dl>
+            <div class="list-group" id="comments-list-container"></div>
+            <br>
+        </div>
+
+        <div class="col-4">
+          <br>
+          <h6> <b> Haz un comentario sobre el producto </b></h6>
+          <br>
+          <p>Puntaje:</p>
+          <select class="form-control" id="commentScore">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+
+          <br>
+          <p>Cuerpo:</p>
+          <textarea class="form-control me-2" id="commentDescription" cols="100" rows="6"></textarea> <br>
+          <button class="btn btn-dark" type="submit" onclick="addComment()">Enviar</button>
+        </div>
+        <div class="col-3">
+          <br>
+          <h6> <b> Productos relacionados</b></h6>
+          <div class="row" id="related-prod-container">
+            
+          </div>
+        </div>
+      </div>
+  </div>
     
   </main>
 

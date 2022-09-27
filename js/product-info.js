@@ -1,7 +1,9 @@
 var product = [];
 var commentsArray = [];
 var productsArray = [];
+var relProductsArray = [];
 var imagesArray = [];
+
 
 /*Función para mostrar imágenes.*/
 function showProdImages() {
@@ -124,6 +126,28 @@ let prodCurrency =  document.getElementById("prodCurrency");
 let prodCost = document.getElementById("prodCost");
 let prodSoldCount = document.getElementById("prodSoldCount");
 
+/*Función para mostrar productos relacionados (relatedProducts- PRODUCT_INFO_URL).*/
+function showRelatedProducts() {
+    let htmlContentToAppend = "";
+
+    for (let i = 0; i < relProductsArray.length; i++) { /*Se inicia un contador para recorrer el arreglo relProductsArray.*/
+        
+        let relProduct = product.relatedProducts;
+
+        /*Se agregan los valores dentro de un div en HTML.*/
+        htmlContentToAppend += `
+        <div class="card" style="width: 18rem;">
+         <img class="card-img-top" src="${relProduct.image}" alt="Card image cap">
+          <div class="card-body">
+           <h5 class="card-title">${relProduct.name}</h5>
+           <a href="product-info.html" class="btn btn-dark">Ver</a>
+          </div>
+        </div>
+        `
+        /*Se llama al div= related-prod-container del HTML y se le agregan todos los valores de los prod relacionados.*/
+        document.getElementById("related-prod-container").innerHTML = htmlContentToAppend;
+    }
+}
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -145,6 +169,16 @@ document.addEventListener("DOMContentLoaded", function (e){
             console.log(product);
 
             showProdImages(imagesArray); /*Ejecutamos la función para mostrar imágenes.*/
+
+            getJSONData(PRODUCTS_URL).then(function (resultObj) { /*Obtenemos toda la info de la lista de prod (JSON) y la mostramos en HTML.*/
+        if (resultObj.status === "ok") {
+
+            productsArray = resultObj.data;
+            relProductsArray = product.relatedProducts;
+
+            showRelatedProducts(productsArray, relProductsArray); /*Ejecutamos la función para mostrar prod relacionados.*/
+        }
+    });
         }
     });
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) { /*Obtenemos toda la info de los comentarios (JSON) y la mostramos en HTML.*/

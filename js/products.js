@@ -61,8 +61,8 @@ function mostrarProductos() {
     {
 
       //Se agregan los valores del objeto dentro de un div en HTML (imagen, descripción, etc...) 
-      htmlContentToAppend += `<div class="list-group" id="cat-list-container">   
-                <div onclick="setProdID(${productos.id}, '${productos.name}')" class="shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action">
+      htmlContentToAppend += 
+        `   <div onclick="setProdID(${productos.id}, '${productos.name}')" class="shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src= "${productos.image}" alt="product image" class="img-fluid rounded"">
@@ -70,15 +70,14 @@ function mostrarProductos() {
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <div class="mb-1">
-                            <h4>${productos.name} - ${productos.currency} : ${productos.cost}</h4> 
-                            <p> ${productos.description}</p> 
+                                <h4>${productos.name} - ${productos.currency} : ${productos.cost}</h4> 
+                                <p> ${productos.description}</p> 
                             </div>
                             <small class="text-muted">${productos.soldCount} Vendidos </small> 
                         </div>
                     </div>
-                    </div>    
-                    </div>  
-                   `;
+                </div>    
+            </div>`;
     }
   }
   listaProductos.innerHTML = htmlContentToAppend;
