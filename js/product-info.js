@@ -127,6 +127,12 @@ let prodCurrency =  document.getElementById("prodCurrency");
 let prodCost = document.getElementById("prodCost");
 let prodSoldCount = document.getElementById("prodSoldCount");
 
+function setProdID(id, name) {
+    localStorage.setItem("prodID", id);
+    localStorage.setItem("prodName", name);
+    window.location = "product-info.html"
+}
+
 /*Función para mostrar productos relacionados (relatedProducts- PRODUCT_INFO_URL).*/
 function showRelatedProducts() {
     let htmlContentToAppend = "";
@@ -137,12 +143,9 @@ function showRelatedProducts() {
 
         /*Se agregan los valores dentro de un div en HTML.*/
         htmlContentToAppend += `
-        <div class="card" style="width: 18rem;">
-         <img class="card-img-top" src="${relProduct.image}" alt="Card image cap">
-          <div class="card-body">
-           <h5 class="card-title">${relProduct.name}</h5>
-           <a href="product-info.html" class="btn btn-dark">Ver</a>
-          </div>
+        <div onclick="setProdID(${relProduct[i].id}, '${relProduct[i].name}')" class="shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action cursor-active">
+            <img class="card-img-top" src="${relProduct[i].image}" alt="Card image cap">
+            <h5>${relProduct[i].name}</h5>
         </div>
         `
         /*Se llama al div= related-prod-container del HTML y se le agregan todos los valores de los prod relacionados.*/
