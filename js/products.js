@@ -55,9 +55,9 @@ function mostrarProductos() {
   for (let i = 0; i < product.products.length; i++) { //Se inicia un contador para recorrer cada producto dentro products.
     let productos = product.products[i]; // utilizo products la propiedad del json. 
 
-    if ((minCost == undefined || (minCost != undefined && parseInt(productos.cost) >= minCost)) &&
-      (maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost))&&
-      (productos.name.toLowerCase().includes(mostrarBusqueda)) || (productos.description.toLowerCase().includes(mostrarBusqueda)) )
+    if (((minCost == undefined || (minCost != undefined && parseInt(productos.cost) >= minCost)) &&
+      ((maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost)) &&
+      ((productos.name.toLowerCase().includes(mostrarBusqueda) || productos.description.toLowerCase().includes(mostrarBusqueda)))))) 
       //El if indica si está entre el mínimo y el máximo, y si el name o la description de los productos tienen incluidos el texto que se ingresa
       //en el input de búsqueda.
     {
