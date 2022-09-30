@@ -10,6 +10,8 @@ const PRODUCT_INFO_URL = `https://japceibal.github.io/emercado-api/products/${PR
 const PRODUCT_INFO_COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODID}${EXT_TYPE}`;
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
+let btnBuscar = document.getElementById("btnBuscar");
+let busqueda = document.getElementById("inputBuscar");
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -62,3 +64,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
 function logout(){
   localStorage.setItem('user','')
 };
+
