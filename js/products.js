@@ -56,8 +56,10 @@ function mostrarProductos() {
     let productos = product.products[i]; // utilizo products la propiedad del json. 
 
     if ((minCost == undefined || (minCost != undefined && parseInt(productos.cost) >= minCost)) &&
-      (maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost)))
-      //El if indica si está entre el mínimo y el máximo.
+      (maxCost == undefined || (maxCost != undefined && parseInt(productos.cost) <= maxCost))&&
+      (productos.name.toLowerCase().includes(mostrarBusqueda)) || (productos.description.toLowerCase().includes(mostrarBusqueda)) )
+      //El if indica si está entre el mínimo y el máximo, y si el name o la description de los productos tienen incluidos el texto que se ingresa
+      //en el input de búsqueda.
     {
 
       //Se agregan los valores del objeto dentro de un div en HTML (imagen, descripción, etc...) 
@@ -166,3 +168,18 @@ document.addEventListener("DOMContentLoaded", async function() {
     });
 });
 
+
+//DESAFIATE 2:
+// defino el array mostrarBusqueda que contendrá los productos que coinciden con lo ingresado en el input de busqueda
+let mostrarBusqueda = [];
+
+//llamo al input de busqueda
+const buscador = document.querySelector('#buscador')
+
+// agrego el escucha al input, utilizo el evento 'input' para capturar los cambios en el valor de dicho input y poder filtrarlo a tiempo real
+// utilizo toLowerCase para pasa a minúsculas el texto ingresado, y comparar contra los nombres y descripciones 
+// en minúscula de los productos que filtraré.
+buscador.addEventListener('input', e => {
+    mostrarBusqueda = e.target.value.toLowerCase();
+    mostrarProductos();
+})
