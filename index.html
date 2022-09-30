@@ -12,11 +12,13 @@
   <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--Fontawesome para los íconos-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+<!--Api de google para login-->    
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="849530565020-op150bhb1ephb2vrosnop5uieq3rhccj.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -24,12 +26,7 @@
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
-          <h3>e-mercado</h3>
-          <div class="d-flex justify-content-end social_icon">
-            <span><i class="fab fa-facebook-square"></i></span>
-            <span><i class="fab fa-google-plus-square" ></i></span>
-            <span><i class="fab fa-twitter-square" ></i></span>
-          </div>
+          <h3 style="text-align: center;">e-mercado</h3>
         </div>
         <div class="card-body">
           <form id="loggin"> 
@@ -48,11 +45,12 @@
                 <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
               </div>
             </div>
-            <div class="row aling-items-center remember">
+            <div class="row justify-content-center remember">
               <input type="checkbox">Recuerdame
             </div>
             <div class="form-group">
               <input type="submit" value="Ingresar" class="btn float-right" id="boton">
+              <div class="g-signin2 m-2" data-onsuccess="onSignIn" data-theme="dark"></div>
             </div>
           </form>
         </div>
@@ -68,35 +66,9 @@
     </div>
   </div>
 
-
-  <!--<section class="vh-200">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-              <form id="loggin">
-              <h3 class="mb-4">e-mercado</h3>
-              <div class="form-outline mb-4">
-                <input type="email" id="user" class="form-control form-control-lg"  placeholder="Email" />
-              </div>
-              <div class="form-outline mb-4">
-                <div class="input-group">
-                  <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña" />
-                  <div class="input-group-append">
-                        <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
-                      </div>
-                </div>
-                <br>
-              </div>
-              <button class="btn btn-primary btn-lg btn-block" type="submit" id="boton">Login</button>
-            </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>-->
+  <script>
+    
+  </script>
   
   <script src="js/login.js"></script>
 </body>
