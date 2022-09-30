@@ -197,3 +197,7 @@ a.custom-card:hover {
   float: left;
   margin-right: 40px;
 }
+
+body{
+  background-color: #f8f7e8;
+}

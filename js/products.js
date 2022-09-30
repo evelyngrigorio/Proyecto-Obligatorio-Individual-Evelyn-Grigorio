@@ -64,7 +64,7 @@ function mostrarProductos() {
 
       //Se agregan los valores del objeto dentro de un div en HTML (imagen, descripción, etc...) 
       htmlContentToAppend += 
-        `   <div onclick="setProdID(${productos.id}, '${productos.name}')" class="shadow-none p-3 mb-5 bg-light rounded list-group-item list-group-item-action cursor-active">
+        `   <div onclick="setProdID(${productos.id}, '${productos.name}')" class="p-3 m-1 bg-light rounded list-group-item list-group-item-action cursor-active shadow-sm">
                 <div class="row">
                     <div class="col-3">
                         <img src= "${productos.image}" alt="product image" class="img-fluid rounded"">
