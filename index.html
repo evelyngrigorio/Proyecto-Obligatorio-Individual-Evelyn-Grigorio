@@ -18,7 +18,7 @@
 <!--Api de google para login-->    
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="849530565020-op150bhb1ephb2vrosnop5uieq3rhccj.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -50,7 +50,11 @@
             </div>
             <div class="form-group">
               <input type="submit" value="Ingresar" class="btn float-right" id="boton">
-              <div class="g-signin2 m-2" data-onsuccess="onSignIn" data-theme="dark"></div>
+              <div id="g_id_onload"
+                  data-client_id="849530565020-op150bhb1ephb2vrosnop5uieq3rhccj.apps.googleusercontent.com"
+                  data-callback="handleCredentialResponse">
+              </div>
+
             </div>
           </form>
         </div>
