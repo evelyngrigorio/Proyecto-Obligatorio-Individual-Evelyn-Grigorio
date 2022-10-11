@@ -26,11 +26,12 @@ function showCart(){
 };
 
 function subtotal(i){
+    let currency = cartArray[i - 1].currency;
     let cost = cartArray[i - 1].unitCost;
     let count = document.getElementById(i).value;
 
      /*Al id=subtotal+i le pasamos el resultado de la multiplicación.*/
-     document.getElementById("subtotal" + i).innerHTML = count * cost;
+     document.getElementById("subtotal" + i).innerHTML = currency + " " + count * cost ;
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
