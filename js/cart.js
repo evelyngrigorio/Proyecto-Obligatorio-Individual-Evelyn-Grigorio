@@ -1,5 +1,13 @@
 let cartArray = [];
 
+function addToCart(){
+    let addToCart = JSON.parse(localStorage.getItem('Producto'));
+
+    cartArray.push(addToCart);
+
+    console.log(cartArray);
+}
+
 function showCart(){
 
     let htmlContentToAppend = "";
@@ -42,6 +50,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             cart = response.data; 
             console.log(cart)
             cartArray = response.data.articles;
+            addToCart();
             showCart();
         }
     })

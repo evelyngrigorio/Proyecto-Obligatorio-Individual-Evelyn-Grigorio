@@ -154,6 +154,8 @@ function showRelatedProducts() {
 }
 
 
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -194,3 +196,24 @@ document.addEventListener("DOMContentLoaded", function (e){
     }
 });
 })
+
+//Redireccionar al carrito de compras
+function goToCart(){
+    window.location.href = "cart.html";
+ }
+
+ //Agregar articulo al carrito
+function setProductToCart(){
+    let article = {
+        count : 1 ,
+        currency : product.currency,
+        cost : product.cost,
+        id : product.id,
+        image : product.images[0],
+        name : product.name,
+        unitCost : product.cost,
+    };
+
+    localStorage.setItem('Producto', JSON.stringify(article));
+    window.location.href = "cart.html";
+}
