@@ -1,4 +1,8 @@
 let cartArray = [];
+let envioPremium = document.getElementById("premiumradio");
+let envioStandard = document.getElementById("standardradio");
+let envioExpress = document.getElementById("expressradio");
+let subtotalVal = document.getElementById("subtotalValue");
 
 function addToCart(){
     let addToCart = JSON.parse(localStorage.getItem('Producto'));
@@ -39,7 +43,22 @@ function subtotal(i){
     let count = document.getElementById(i).value;
 
      /*Al id=subtotal+i le pasamos el resultado de la multiplicación.*/
-     document.getElementById("subtotal" + i).innerHTML = currency + " " + count * cost ;
+    document.getElementById("subtotal" + i).innerHTML = currency + " " + count * cost ;
+    subtotalVal.innerHTML = currency + " " + count * cost  ;
+}
+
+function priceShipping(){
+    switch (envioExpress) {
+        case 'premium':
+            if(premium === "checked"){
+                let resultado = subtotalVal.value * 0.15
+                document.getElementById("envioValue").innerHTML = resultado;
+            }
+            break;
+    
+        default:
+            break;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
@@ -52,6 +71,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             cartArray = response.data.articles;
             addToCart();
             showCart();
+            priceShipping();
         }
     })
 });
