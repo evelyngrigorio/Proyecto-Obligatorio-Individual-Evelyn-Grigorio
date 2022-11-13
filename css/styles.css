@@ -202,3 +202,10 @@ body{
   background-color: #f8f7e8;
 }
 
+.img-thumbnail-cart{
+  padding: 0.25rem;
+  border-radius: 0.50rem;
+  width: 100px;
+  float: left;
+  margin-right: 40px;
+}

@@ -24,7 +24,7 @@ function showCart() {
     htmlContentToAppend += `
             <tr>
              <td class="w-25">
-             <img src="${cartProduct.image}" class="img-fluid img-thumbnail">
+             <img src="${cartProduct.image}" class="img-fluid img-thumbnail-cart">
              </td>
               <td> ${cartProduct.name}</td>
               <td id="unitCost${i}">${currency2} ${cost}</td>
@@ -230,57 +230,75 @@ document.addEventListener("DOMContentLoaded", async function() {
     return false;
   });
 
-  /*Se validan los campos de la modal de tarjeta de crédito.*/
-  creditCardForm.addEventListener("submit", function (e) {
-    let completeNameInput = document.getElementById("completeName");
-    let cardNumberInput = document.getElementById("cardNumber");
-    let expirationDateInput = document.getElementById("expirationDate");
-    let cvvInput = document.getElementById("cvv");
 
-    let infoMissing = false;
+document.getElementById("finish").addEventListener("click", (e)=>{
+  e.preventDefault;
+})
 
-    completeNameInput.classList.remove('is-invalid');
-    cardNumberInput.classList.remove('is-invalid');
-    expirationDateInput.classList.remove('is-invalid');
-    cvvInput.classList.remove('is-invalid');
+// Validaciones para el pago y los datos requeridos en ambos casos
+const payment = document.getElementsByName('paymentoption');
+const card_number = document.getElementById('card_number');
+const card_exp = document.getElementById('card_exp');
+const card_cvv = document.getElementById('card_cvv');
+const bank_bank = document.getElementById('bank_bank');
+const bank_num = document.getElementById('bank_num');
+const metodoPago = document.getElementById('metodoPago');
+const pay_link = document.getElementById('change_payment');
 
-    if (completeNameInput.value === "") {
-      completeNameInput.classList.add('is-invalid');
-      infoMissing = true;
+// Para habilitar o inhabilitar opciones de pago entre tarjeta o transferencia bancaria
+payment.forEach(pay_opt => {
+    pay_opt.addEventListener('change', ()=>{
+        if(payment[0].checked){
+            card_number.disabled = false;
+            card_exp.disabled = false;
+            card_cvv.disabled = false;
+            bank_bank.disabled = true;
+            bank_num.disabled = true;
+            metodoPago.innerText = 'Tarjeta de crédito';
+        }
+        else if(payment[1].checked){
+            card_number.disabled = true;
+            card_exp.disabled = true;
+            card_cvv.disabled = true;
+            bank_bank.disabled = false;
+            bank_num.disabled = false;
+            metodoPago.innerText = 'Transferencia bancaria';
+        }
+    })
+});
+
+// Validación para el modal de medios de pago
+const close_modal = document.getElementById('close_modal');
+const alert_card = document.getElementById('alert_card');
+const alert_bank = document.getElementById('alert_bank');
+const alertaPago = document.getElementById('alertaPago');
+
+close_modal.addEventListener('click', ()=>{
+    if(payment[0].checked){
+        alert_bank.innerText = '';
+        if(card_number.value == '' || card_exp.value == '' || card_cvv.value == ''){
+            alert_card.innerText = 'Ingrese todos los datos de su tarjeta';
+            alertaPago.innerText = 'Complete el formulario de pago';
+            pay_link.classList.add('text-danger');
+        }
+        else{
+            alert_card.innerText = '';
+            alertaPago.innerText = '';
+            pay_link.classList.remove('text-danger');
+        }
     }
-
-    if (cardNumberInput.value === "") {
-      cardNumberInput.classList.add('is-invalid');
-      infoMissing = true;
+    if(payment[1].checked){
+        alert_card.innerText = '';
+        if(bank_bank.value == '' || bank_num.value == ''){
+            alert_bank.innerText = 'Ingrese todos los datos de su cuenta bancaria';
+            alertaPago.innerText = 'Complete el formulario de pago';
+            pay_link.classList.add('text-danger');
+        }
+        else{
+            alert_bank.innerText = '';
+            alertaPago.innerText = '';
+            pay_link.classList.remove('text-danger');
+        }
     }
-
-    if (expirationDateInput.value === "") {
-      expirationDateInput.classList.add('is-invalid');
-      infoMissing = true;
-    }
-
-    if (cvvInput.value === "") {
-      cvvInput.classList.add('is-invalid');
-      infoMissing = true;
-    }
-
-    if (!infoMissing) {
-      msgToShow = "¡Pago realizado con éxito!";
-      document.getElementById("alertMessage").classList.add('alert-success');
-      document.getElementById("completeName").value = "";
-      document.getElementById("cardNumber").value = "";
-      document.getElementById("expirationDate").value = "";
-      document.getElementById("cvv").value = "";
-
-    } else if (infoMissing) {
-      msgToShow = "Debe completar campos vacíos";
-      document.getElementById('alertMessage').classList.add('alert-danger');
-    }
-
-    msgToShowHTML.innerHTML = msgToShow
-    document.getElementById("alertMessage").classList.add('show');
-
-    if (e.preventDefault) e.preventDefault();
-    return false;
-  });
+})
 });
