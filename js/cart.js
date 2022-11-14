@@ -7,6 +7,17 @@ let subtotal = 0;
 let msgToShowHTML = document.getElementById("alertSpan");
 let msgToShow = "";
 
+
+// Constantes de  las validaciones para el pago y los datos requeridos en ambos casos
+const payment = document.getElementsByName('paymentoption');
+const card_number = document.getElementById('card_number');
+const card_exp = document.getElementById('card_exp');
+const card_cvv = document.getElementById('card_cvv');
+const bank_bank = document.getElementById('bank_bank');
+const bank_num = document.getElementById('bank_num');
+const metodoPago = document.getElementById('metodoPago');
+const pay_link = document.getElementById('change_payment');
+
 /*Función para mostrar los productos del carrito. Creamos la var cost (guarda info de costo unitario y moneda convertidos -con función convert-)*/
 function showCart() {
   let htmlContentToAppend = "";
@@ -235,15 +246,6 @@ document.getElementById("finish").addEventListener("click", (e)=>{
   e.preventDefault;
 })
 
-// Validaciones para el pago y los datos requeridos en ambos casos
-const payment = document.getElementsByName('paymentoption');
-const card_number = document.getElementById('card_number');
-const card_exp = document.getElementById('card_exp');
-const card_cvv = document.getElementById('card_cvv');
-const bank_bank = document.getElementById('bank_bank');
-const bank_num = document.getElementById('bank_num');
-const metodoPago = document.getElementById('metodoPago');
-const pay_link = document.getElementById('change_payment');
 
 // Para habilitar o inhabilitar opciones de pago entre tarjeta o transferencia bancaria
 payment.forEach(pay_opt => {
