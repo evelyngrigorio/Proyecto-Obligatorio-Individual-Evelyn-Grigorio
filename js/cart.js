@@ -185,8 +185,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   /*Validaciones*/
   let buyForm = document.getElementById("buy-form");
-  let creditCardForm = document.getElementById("credit-card-form");
-  let wireTransferForm = document.getElementById("wire-transfer-form");
 
   /*Se validan los campos calle, número y esquina después de clickear el botón submit.*/
   buyForm.addEventListener("submit", function (e) {
@@ -241,12 +239,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     return false;
   });
 
-
-document.getElementById("finish").addEventListener("click", (e)=>{
-  e.preventDefault;
-})
-
-
 // Para habilitar o inhabilitar opciones de pago entre tarjeta o transferencia bancaria
 payment.forEach(pay_opt => {
     pay_opt.addEventListener('change', ()=>{
@@ -269,12 +261,13 @@ payment.forEach(pay_opt => {
     })
 });
 
-// Validación para el modal de medios de pago
+// Constantes para validar el modal
 const close_modal = document.getElementById('close_modal');
 const alert_card = document.getElementById('alert_card');
 const alert_bank = document.getElementById('alert_bank');
 const alertaPago = document.getElementById('alertaPago');
 
+// Validación del modal de método de pago
 close_modal.addEventListener('click', ()=>{
     if(payment[0].checked){
         alert_bank.innerText = '';
@@ -304,3 +297,17 @@ close_modal.addEventListener('click', ()=>{
     }
 })
 });
+
+function validarCompra(e){
+  e.preventDefault();
+
+  let streetInput = document.getElementById("street").value;
+  let numberInput = document.getElementById("number").value;
+  let cornerInput = document.getElementById("corner").value;
+
+  if(streetInput == '' || numberInput == '' || cornerInput == '' ){
+    e.preventDefault();
+    
+  };
+
+};

@@ -60,9 +60,6 @@
           </table>
           <br>
         </div>
-        <br>
-        <hr class="my-3">
-        <br>
 
         <div class="justify-content-md-center">
           <div class="col">
@@ -113,7 +110,7 @@
                     <div class="col text-right">
                       <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                         <label class="btn btn-outline-dark" id="dollars">
-                          <input type="radio" name="options" autocomplete="off">Dólares
+                          <input type="radio" name="options" autocomplete="on">Dólares
                         </label>
                         <label class="btn btn-outline-dark" id="uruguayanPesos">
                           <input type="radio" name="options" autocomplete="off">Pesos uruguayos
@@ -122,40 +119,43 @@
                     </div>
                 </div>
               </div>
-              <br>
-              <hr>
-              <br>
 
               <h4 class="mt-5">Dirección de envío</h4>
-              <div class="row">
-                <div class="form-group col-6">
-                  <label for="street" class="required">Calle</label>
-                  <input type="text" class="form-control" id="street" placeholder="" value="">
-                  <div class="invalid-feedback">
-                    Por favor indicar Calle.
+                <div class="row">
+                  <div class="form-group col-6">
+                    <label for="street">Calle</label>
+                    <input type="text" class="form-control" id="street" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                      Por favor indicar Calle.
+                    </div>
+                    <div class="valid-feedback">
+                      Ok.
+                    </div>
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="number">Número</label>
+                    <input type="text" class="form-control" id="number" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                      Por favor indicar número de puerta.
+                    </div>
+                    <div class="valid-feedback">
+                      Ok.
+                    </div>
                   </div>
                 </div>
-                <div class="form-group col-6">
-                  <label for="number" class="required">Número</label>
-                  <input type="text" class="form-control" id="number" placeholder="" value="">
-                  <div class="invalid-feedback">
-                    Por favor indicar número de puerta.
+                <div class="row">
+                  <div class="form-group col-6">
+                    <label for="corner">Esquina</label>
+                    <input type="text" class="form-control" id="corner" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                      Por favor indicar una esquina.
+                    </div>
+                    <div class="valid-feedback">
+                      Ok.
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="form-group col-6">
-                  <label for="corner" class="required">Esquina</label>
-                  <input type="text" class="form-control" id="corner" placeholder="" value="">
-                  <div class="invalid-feedback">
-                    Por favor indicar una esquina.
-                  </div>
-                </div>
-              </div>
-              
-              <br>
-              <hr>
-              <br>
 
               <h4 class="mt-5">Forma de Pago</h4>
               <div class="d-flex">
@@ -163,10 +163,8 @@
                 <button id="change_payment" type="button" class="btn btn-link p-2" data-bs-toggle="modal" data-bs-target="#modalPago">Seleccionar o Cambiar</button> 
               </div>
               <small><div id="alertaPago" class="text-danger"></div></small> <br>
-
-              <hr class="mb-4">
               
-              <button class="btn btn-dark btn-lg" type="submit" id="finish">Finalizar compra</button>
+              <button class="btn btn-dark btn-lg" onclick="validarCompra()">Finalizar compra</button>
           </div>
           </form>
         </div>
