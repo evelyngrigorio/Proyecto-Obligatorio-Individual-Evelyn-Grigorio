@@ -299,15 +299,19 @@ close_modal.addEventListener('click', ()=>{
 });
 
 function validarCompra(e){
-  e.preventDefault();
-
   let streetInput = document.getElementById("street").value;
   let numberInput = document.getElementById("number").value;
   let cornerInput = document.getElementById("corner").value;
 
   if(streetInput == '' || numberInput == '' || cornerInput == '' ){
-    e.preventDefault();
-    
-  };
+      let alert = '';
 
+      alert = `
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Faltan datos por completar</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      `
+      document.getElementById("alertaDatos").innerHTML = alert;
+  }
 };
