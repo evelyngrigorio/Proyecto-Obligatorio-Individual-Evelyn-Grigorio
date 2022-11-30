@@ -209,3 +209,8 @@ body{
   float: left;
   margin-right: 40px;
 }
+
+#imgPreview{
+  width: 150px;
+  border-radius: 50%;
+}
