@@ -82,7 +82,8 @@
  - Solamente se podrá ingresar al perfil si el usuario se encuentra logueado. Además, al momento de ingresar por primera vez, todos los campos se deben encontrar vacíos, excepto E-mail, que debe contener el ingresado por el usuario al momento del login.
 - 2) Al presionar el botón para guardar los datos, se debe validar que los campos obligatorios (*) se encuentren con valor, y de ser así, guardar en el almacenamiento local.
 - 3) Las siguientes veces que se ingrese al perfil, ya se deben encontrar los datos cargados en los input, listos para ser modificados por el usuario.
-  
+
+<!--
 # Secciones del sitio
 
 ## Inicio de sesión y portada
@@ -140,6 +141,8 @@ También podrás ingresar al sitio desde tu celular y utilizar la página cómod
 ![carritoPhone](https://i.postimg.cc/gkP3Yszr/shot-2022-12-30-22-05-41.png)
 ![perfilPhone](https://i.postimg.cc/nhF7mLQJ/shot-2022-12-30-22-06-40.png)
 <br><br>
+
+-->
 
 ## Api utilizada para este proyecto  
 https://japceibal.github.io/emercado-api/
